@@ -26,7 +26,7 @@ babel: Babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """
     Picks best match w/ user's-
     -supported language defined in Config class.
@@ -40,7 +40,7 @@ def get_locale():
 
 
 @app.route('/')
-def index():
+def index() -> str:
     """
     Index route for Flask app that renders 0-index.html
     in templates dir.
