@@ -52,4 +52,9 @@ def index() -> str:
 
 
 if __name__ == '__main__':
+    """
+    Entry point to flask app.
+    Checks if module is run directly, and only then
+    does it run the app.
+    """
     app.run(debug=True)
