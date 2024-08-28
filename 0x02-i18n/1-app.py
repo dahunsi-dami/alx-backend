@@ -28,11 +28,11 @@ babel: Babel = Babel(app)
 @app.route('/')
 def index():
     """
-    Index route for Flask app that renders 0-index.html
+    Index route for Flask app that renders 1-index.html
     in templates dir.
 
     Returns:
-        str: rendered HTML of 0-index.html.
+        str: rendered HTML of 1-index.html.
     """
     return render_template('1-index.html')
 
