@@ -40,7 +40,24 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> dict:
-        """Deletion-resilient paginated data returning function."""
+        """
+        Deletion-resilient paginated data returning function.
+        
+        Args:
+            index: starting index for pagination. None by default.
+            page_size: number of iterms per page. 10 by default.
+
+        Returns:
+            dict: dictionary containing:
+                - index: current start index of the page.
+                - data: list of dataset rows for current page.
+                - page_size: actual size of returned dataset page.
+                - next_index: next index to query w/ or NOne if no more data.
+
+        Raises:
+            AssertionError: if index isn't valid int/out of range or
+                            page_size isn't a +ve int.
+        """
         assert isinstance(index, int) and index >= 0
         assert isinstance(page_size, int) and page_size > 0
 
