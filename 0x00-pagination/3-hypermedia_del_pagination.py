@@ -42,7 +42,7 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> dict:
         """
         Deletion-resilient paginated data returning function.
-        
+
         Args:
             index: starting index for pagination. None by default.
             page_size: number of iterms per page. 10 by default.
