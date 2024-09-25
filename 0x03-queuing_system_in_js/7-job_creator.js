@@ -1,9 +1,7 @@
 import kue from 'kue';
 
-// Create a Kue queue
 const queue = kue.createQueue();
 
-// Array of jobs
 const jobs = [
   {
     phoneNumber: '4153518780',
@@ -51,7 +49,6 @@ const jobs = [
   }
 ];
 
-// Loop through the jobs array and create jobs
 jobs.forEach(jobData => {
   const job = queue.create('push_notification_code_2', jobData);
 
@@ -71,7 +68,6 @@ jobs.forEach(jobData => {
     console.log(`Notification job ${job.id} ${progress}% complete`);
   });
 
-  // Save the job to the queue
   job.save(err => {
     if (err) {
       console.error(`Error saving job: ${err}`);
@@ -79,23 +75,19 @@ jobs.forEach(jobData => {
   });
 });
 
-// Process jobs from the queue
 queue.process('push_notification_code_2', (job, done) => {
-  // Simulate job processing
   const { phoneNumber, message } = job.data;
   
-  // Here you can implement your job processing logic
   console.log(`Sending message to ${phoneNumber}: ${message}`);
 
-  // Simulating progress
   let progress = 0;
   const interval = setInterval(() => {
-    progress += 20; // Increment progress
-    job.progress(progress); // Update job progress
+    progress += 20;
+    job.progress(progress);
 
     if (progress >= 100) {
       clearInterval(interval);
-      return done(); // Mark job as complete
+      return done();
     }
-  }, 1000); // Update progress every second
+  }, 1000);
 });
