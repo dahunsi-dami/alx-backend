@@ -29,4 +29,3 @@ class FIFOCache(BaseCaching):
     def get(self, key):
         """Gets an item by key."""
         return self.cache_data.get(key, None)
-
