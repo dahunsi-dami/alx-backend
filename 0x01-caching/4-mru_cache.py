@@ -17,12 +17,14 @@ class MRUCache(BaseCaching):
         """Adds an item to the cache with MRU eviction policy."""
         if key is not None and item is not None:
             self.cache_data[key] = item
-            
+
             if key not in self.usedKeys:
                 self.usedKeys.append(key)
             else:
-                self.usedKeys.append(self.usedKeys.pop(self.usedKeys.index(key)))
-            
+                self.usedKeys.append(
+                    self.usedKeys.pop(self.usedKeys.index(key))
+                )
+
             if len(self.usedKeys) > BaseCaching.MAX_ITEMS:
                 discard_key = self.usedKeys.pop(-2)
                 del self.cache_data[discard_key]
@@ -34,4 +36,3 @@ class MRUCache(BaseCaching):
             self.usedKeys.append(self.usedKeys.pop(self.usedKeys.index(key)))
             return self.cache_data[key]
         return None
-
