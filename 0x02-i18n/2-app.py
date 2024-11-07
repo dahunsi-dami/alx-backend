@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """Basic Flask app w/ Babel localization support."""
 
-
 from flask import Flask, render_template, request
 from flask_babel import Babel
-
-app = Flask(__name__)
 
 
 class Config:
@@ -18,6 +15,7 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+app = Flask(__name__)
 
 # We need to apply config to flask app now, so:
 app.config.from_object(Config)
