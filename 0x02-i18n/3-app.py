@@ -26,6 +26,13 @@ app.config.from_object(Config)
 babel: Babel = Babel(app)
 
 
+def _(message: str) -> str:
+    """
+    Translates a message to the current locale.
+    """
+    return gettext(message)
+
+
 @babel.localeselector
 def get_locale() -> str:
     """
