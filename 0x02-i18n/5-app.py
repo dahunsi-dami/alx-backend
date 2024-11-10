@@ -36,6 +36,13 @@ app.config.from_object(Config)
 babel: Babel = Babel(app)
 
 
+def _(message: str) -> str:
+    """
+    Translates a message to the current locale.
+    """
+    return gettext(message)
+
+
 def get_user():
     """
     Gets a user w/ login_as URL parameter.
