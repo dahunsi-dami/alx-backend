@@ -75,6 +75,9 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
+app.jinja_env.globals['get_locale'] = get_locale
+
+
 @app.route('/')
 def index() -> str:
     """
@@ -84,7 +87,7 @@ def index() -> str:
     Returns:
         str: rendered HTML of 0-index.html.
     """
-    return render_template('5-index.html')
+    return render_template('5-index.html', user=g.user)
 
 
 if __name__ == '__main__':
